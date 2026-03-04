@@ -1,0 +1,2192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bharat Darshan - India's Leading Travel Platform | Domestic & International</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #FF6B6B;
+            --secondary: #4ECDC4;
+            --accent: #FFE66D;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            --gradient-4: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            --dark: #2c3e50;
+            --light: #f8f9fa;
+            --white: #ffffff;
+            --shadow: 0 10px 40px rgba(0,0,0,0.1);
+            --border-radius: 20px;
+        }
+
+        body {
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+            height: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border-radius: 10px;
+            border: 3px solid rgba(255,255,255,0.2);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(45deg, var(--secondary), var(--primary));
+        }
+
+        /* Header with Glassmorphism */
+        .header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            animation: slideDown 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo h1 {
+            color: var(--white);
+            font-size: 2rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .logo span {
+            background: var(--accent);
+            color: var(--dark);
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--white);
+            transition: width 0.3s;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 50%;
+        }
+
+        .user-menu {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .login-btn {
+            background: var(--white);
+            color: var(--primary) !important;
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .signup-btn {
+            border: 2px solid var(--white);
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+        }
+
+        /* Main Container */
+        .main-container {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section with Animation */
+        .hero-section {
+            text-align: center;
+            color: var(--white);
+            padding: 4rem 1rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-section h2 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-section p {
+            font-size: 1.3rem;
+            opacity: 0.95;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Travel Type Selector */
+        .travel-type {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .type-btn {
+            padding: 1rem 3rem;
+            border: none;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(5px);
+            color: var(--white);
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .type-btn.active {
+            background: var(--white);
+            color: var(--primary);
+            transform: scale(1.05);
+        }
+
+        .type-btn:hover {
+            border-color: var(--white);
+        }
+
+        /* Search Container with Glassmorphism */
+        .search-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 3rem;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .service-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .service-tab {
+            padding: 0.8rem 2rem;
+            border: none;
+            background: none;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--dark);
+            cursor: pointer;
+            border-radius: 40px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .service-tab i {
+            font-size: 1.2rem;
+        }
+
+        .service-tab:hover {
+            background: rgba(255, 107, 107, 0.1);
+        }
+
+        .service-tab.active {
+            background: var(--gradient-1);
+            color: var(--white);
+        }
+
+        /* Search Forms */
+        .search-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            align-items: end;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: var(--dark);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .form-group input,
+        .form-group select {
+            padding: 0.8rem;
+            border: 2px solid #eee;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s;
+            background: var(--white);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.2);
+        }
+
+        .search-btn {
+            background: var(--gradient-1);
+            color: var(--white);
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            height: 48px;
+            font-size: 1rem;
+        }
+
+        .search-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Destination Categories */
+        .dest-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .category-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            text-align: center;
+            color: var(--white);
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.2);
+            border-color: var(--white);
+        }
+
+        .category-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Popular Destinations Grid */
+        .destinations-section {
+            margin: 4rem 0;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--white);
+            margin: 2rem 0 1.5rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+        }
+
+        .view-all {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1.5rem;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 30px;
+            transition: all 0.3s;
+        }
+
+        .view-all:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .destinations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .dest-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .dest-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+
+        .dest-image {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .dest-tag {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--gradient-2);
+            color: var(--white);
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .dest-content {
+            padding: 1.5rem;
+        }
+
+        .dest-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .dest-name {
+            font-size: 1.3rem;
+            color: var(--dark);
+        }
+
+        .dest-rating {
+            color: gold;
+            font-weight: 600;
+        }
+
+        .dest-location {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .dest-features {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            color: #666;
+        }
+
+        .dest-features span {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .dest-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .dest-price small {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Offers Section */
+        .offers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .offer-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .offer-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .offer-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .offer-tag {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--gradient-3);
+            color: var(--white);
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .offer-content {
+            padding: 1.5rem;
+        }
+
+        .offer-content h3 {
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .offer-content p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .offer-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        /* Hotels Section */
+        .hotels-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .hotel-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .hotel-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .hotel-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .hotel-rating-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--gradient-4);
+            color: var(--white);
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-weight: 600;
+        }
+
+        .hotel-content {
+            padding: 1.5rem;
+        }
+
+        .hotel-name {
+            font-size: 1.2rem;
+            color: var(--dark);
+            margin-bottom: 0.3rem;
+        }
+
+        .hotel-location {
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .hotel-amenities {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .amenity {
+            background: var(--light);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .hotel-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        /* Packages Section */
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .package-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .package-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .package-image {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .package-duration {
+            position: absolute;
+            bottom: 1rem;
+            left: 1rem;
+            background: rgba(0,0,0,0.7);
+            color: var(--white);
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+        }
+
+        .package-content {
+            padding: 1.5rem;
+        }
+
+        .package-title {
+            font-size: 1.3rem;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .package-cities {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .package-includes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .include-item {
+            background: var(--light);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .package-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 2px solid #eee;
+        }
+
+        .package-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .book-btn {
+            background: var(--gradient-1);
+            color: var(--white);
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .book-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: var(--border-radius);
+            padding: 3rem 2rem;
+            margin: 4rem 0;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: rgba(255,255,255,0.2);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            color: var(--white);
+        }
+
+        .testimonial-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            background-size: cover;
+            background-position: center;
+            border: 4px solid var(--white);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin: 1rem 0;
+            line-height: 1.6;
+        }
+
+        .testimonial-name {
+            font-weight: 600;
+        }
+
+        .testimonial-rating {
+            color: gold;
+            margin-top: 0.5rem;
+        }
+
+        /* Login Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            animation: fadeIn 0.3s;
+        }
+
+        .modal-content {
+            background: var(--white);
+            max-width: 450px;
+            margin: 50px auto;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            position: relative;
+            animation: slideUp 0.3s;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: var(--dark);
+        }
+
+        .login-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            background: var(--light);
+            padding: 0.3rem;
+            border-radius: 40px;
+        }
+
+        .login-tab {
+            flex: 1;
+            padding: 0.8rem;
+            border: none;
+            background: none;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 30px;
+            transition: all 0.3s;
+        }
+
+        .login-tab.active {
+            background: var(--gradient-1);
+            color: var(--white);
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .login-form input {
+            padding: 1rem;
+            border: 2px solid #eee;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .login-form input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .login-form button {
+            background: var(--gradient-1);
+            color: var(--white);
+            border: none;
+            padding: 1rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .login-form button:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Admin Dashboard */
+        .admin-dashboard {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin: 2rem 0;
+            display: none;
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #eee;
+        }
+
+        .admin-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: var(--gradient-1);
+            color: var(--white);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        .stat-card h3 {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .admin-table {
+            overflow-x: auto;
+        }
+
+        .admin-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .admin-table th {
+            background: var(--gradient-1);
+            color: var(--white);
+            padding: 1rem;
+            text-align: left;
+        }
+
+        .admin-table td {
+            padding: 1rem;
+            border-bottom: 2px solid #eee;
+        }
+
+        .status-badge {
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .status-confirmed {
+            background: #e8f5e8;
+            color: #4CAF50;
+        }
+
+        .status-pending {
+            background: #fff3e0;
+            color: #FF9800;
+        }
+
+        .status-cancelled {
+            background: #ffebee;
+            color: #f44336;
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px);
+            color: var(--white);
+            padding: 3rem 2rem 1rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--white);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.8);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero-section h2 {
+                font-size: 2.5rem;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .travel-type {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .type-btn {
+                width: 100%;
+            }
+
+            .search-form {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">
+                <h1>Dream Travels</h1>
+                <span>Travel Beyond Limits</span>
+            </div>
+            <nav class="nav-links">
+                <a href="#" class="nav-link active">Home</a>
+                <a href="#" class="nav-link">Domestic</a>
+                <a href="#" class="nav-link">International</a>
+                <a href="#" class="nav-link">Flights</a>
+                <a href="#" class="nav-link">Hotels</a>
+                <a href="#" class="nav-link">Packages</a>
+                <a href="#" class="nav-link">Trains</a>
+                <a href="#" class="nav-link">Buses</a>
+                <div class="user-menu">
+                    <a href="#" class="nav-link login-btn" id="loginBtn">Login</a>
+                    <a href="#" class="nav-link signup-btn">Sign Up</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <h2>Discover the Incredible India & Beyond</h2>
+            <p>From the Himalayas to the French Riviera - Your journey begins here</p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">Domestic Destinations</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">International Countries</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">1M+</div>
+                    <div class="stat-label">Happy Travelers</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Travel Type Selector -->
+        <div class="travel-type">
+            <button class="type-btn active" onclick="switchTravelType('domestic')">🇮🇳 Domestic Travel</button>
+            <button class="type-btn" onclick="switchTravelType('international')">🌍 International Travel</button>
+        </div>
+
+        <!-- Search Container -->
+        <div class="search-container">
+            <div class="service-tabs">
+                <button class="service-tab active" onclick="switchService('flights')">
+                    ✈️ Flights
+                </button>
+                <button class="service-tab" onclick="switchService('hotels')">
+                    🏨 Hotels
+                </button>
+                <button class="service-tab" onclick="switchService('packages')">
+                    🎁 Packages
+                </button>
+                <button class="service-tab" onclick="switchService('trains')">
+                    🚂 Trains
+                </button>
+                <button class="service-tab" onclick="switchService('buses')">
+                    🚌 Buses
+                </button>
+            </div>
+
+            <!-- Flight Search Form -->
+            <div id="flightSearch" class="search-form">
+                <div class="form-group">
+                    <label>✈️ From</label>
+                    <input type="text" placeholder="Enter city or airport" value="Delhi" id="fromCity">
+                </div>
+                <div class="form-group">
+                    <label>📍 To</label>
+                    <input type="text" placeholder="Enter city or airport" value="Mumbai" id="toCity">
+                </div>
+                <div class="form-group">
+                    <label>📅 Departure</label>
+                    <input type="date" id="departDate" value="2024-06-15">
+                </div>
+                <div class="form-group">
+                    <label>📅 Return</label>
+                    <input type="date" id="returnDate" value="2024-06-22">
+                </div>
+                <div class="form-group">
+                    <label>👥 Travellers</label>
+                    <select id="travellers">
+                        <option>1 Adult</option>
+                        <option>2 Adults</option>
+                        <option>2 Adults + 1 Child</option>
+                        <option>Family (4+)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>💺 Class</label>
+                    <select id="class">
+                        <option>Economy</option>
+                        <option>Premium Economy</option>
+                        <option>Business</option>
+                        <option>First Class</option>
+                    </select>
+                </div>
+                <button class="search-btn" onclick="searchFlights()">Search Flights</button>
+            </div>
+
+            <!-- Hotel Search Form -->
+            <div id="hotelSearch" class="search-form" style="display: none;">
+                <div class="form-group">
+                    <label>📍 Destination</label>
+                    <input type="text" placeholder="Enter city or hotel" value="Goa">
+                </div>
+                <div class="form-group">
+                    <label>📅 Check-in</label>
+                    <input type="date" value="2024-06-15">
+                </div>
+                <div class="form-group">
+                    <label>📅 Check-out</label>
+                    <input type="date" value="2024-06-22">
+                </div>
+                <div class="form-group">
+                    <label>👥 Guests</label>
+                    <select>
+                        <option>1 Room, 2 Adults</option>
+                        <option>1 Room, 1 Adult</option>
+                        <option>2 Rooms, 4 Adults</option>
+                        <option>Family Suite</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>💰 Price Range</label>
+                    <select>
+                        <option>₹0 - ₹2000</option>
+                        <option>₹2000 - ₹5000</option>
+                        <option>₹5000 - ₹10000</option>
+                        <option>₹10000+</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>⭐ Rating</label>
+                    <select>
+                        <option>Any</option>
+                        <option>3 Star</option>
+                        <option>4 Star</option>
+                        <option>5 Star</option>
+                    </select>
+                </div>
+                <button class="search-btn">Search Hotels</button>
+            </div>
+
+            <!-- Package Search Form -->
+            <div id="packageSearch" class="search-form" style="display: none;">
+                <div class="form-group">
+                    <label>📍 Destination</label>
+                    <input type="text" placeholder="Where do you want to go?" value="Kerala">
+                </div>
+                <div class="form-group">
+                    <label>📅 Duration</label>
+                    <select>
+                        <option>3-5 Days</option>
+                        <option>6-8 Days</option>
+                        <option>9-12 Days</option>
+                        <option>15+ Days</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>👥 Travellers</label>
+                    <select>
+                        <option>Couple</option>
+                        <option>Family</option>
+                        <option>Group</option>
+                        <option>Solo</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>💰 Budget</label>
+                    <select>
+                        <option>₹5000 - ₹10000</option>
+                        <option>₹10000 - ₹25000</option>
+                        <option>₹25000 - ₹50000</option>
+                        <option>₹50000+</option>
+                    </select>
+                </div>
+                <button class="search-btn">Search Packages</button>
+            </div>
+
+            <!-- Train Search Form -->
+            <div id="trainSearch" class="search-form" style="display: none;">
+                <div class="form-group">
+                    <label>🚉 From</label>
+                    <input type="text" placeholder="Station name" value="Mumbai CST">
+                </div>
+                <div class="form-group">
+                    <label>🚉 To</label>
+                    <input type="text" placeholder="Station name" value="Delhi">
+                </div>
+                <div class="form-group">
+                    <label>📅 Date</label>
+                    <input type="date" value="2024-06-15">
+                </div>
+                <div class="form-group">
+                    <label>💺 Class</label>
+                    <select>
+                        <option>Sleeper</option>
+                        <option>AC 3 Tier</option>
+                        <option>AC 2 Tier</option>
+                        <option>First Class AC</option>
+                    </select>
+                </div>
+                <button class="search-btn">Search Trains</button>
+            </div>
+
+            <!-- Bus Search Form -->
+            <div id="busSearch" class="search-form" style="display: none;">
+                <div class="form-group">
+                    <label>🚌 From</label>
+                    <input type="text" placeholder="City" value="Bangalore">
+                </div>
+                <div class="form-group">
+                    <label>🚌 To</label>
+                    <input type="text" placeholder="City" value="Chennai">
+                </div>
+                <div class="form-group">
+                    <label>📅 Date</label>
+                    <input type="date" value="2024-06-15">
+                </div>
+                <div class="form-group">
+                    <label>💺 Bus Type</label>
+                    <select>
+                        <option>AC Sleeper</option>
+                        <option>AC Seater</option>
+                        <option>Non-AC Sleeper</option>
+                        <option>Volvo Multi-axle</option>
+                    </select>
+                </div>
+                <button class="search-btn">Search Buses</button>
+            </div>
+        </div>
+
+        <!-- Destination Categories -->
+        <div class="dest-categories">
+            <div class="category-card" onclick="filterDestinations('beach')">
+                <div class="category-icon">🏖️</div>
+                <h3>Beach Destinations</h3>
+                <p>Goa, Andaman, Maldives</p>
+            </div>
+            <div class="category-card" onclick="filterDestinations('mountain')">
+                <div class="category-icon">🏔️</div>
+                <h3>Hill Stations</h3>
+                <p>Manali, Shimla, Kashmir</p>
+            </div>
+            <div class="category-card" onclick="filterDestinations('heritage')">
+                <div class="category-icon">🏛️</div>
+                <h3>Heritage Sites</h3>
+                <p>Jaipur, Agra, Hampi</p>
+            </div>
+            <div class="category-card" onclick="filterDestinations('wildlife')">
+                <div class="category-icon">🐅</div>
+                <h3>Wildlife</h3>
+                <p>Ranthambore, Jim Corbett</p>
+            </div>
+        </div>
+
+        <!-- Domestic Destinations Section -->
+        <div id="domesticSection" class="destinations-section">
+            <div class="section-header">
+                <h2>🇮🇳 Popular Domestic Destinations</h2>
+                <a href="#" class="view-all">View All Domestic →</a>
+            </div>
+            <div class="destinations-grid" id="domesticGrid"></div>
+        </div>
+
+        <!-- International Destinations Section -->
+        <div id="internationalSection" class="destinations-section" style="display: none;">
+            <div class="section-header">
+                <h2>🌍 Popular International Destinations</h2>
+                <a href="#" class="view-all">View All International →</a>
+            </div>
+            <div class="destinations-grid" id="internationalGrid"></div>
+        </div>
+
+        <!-- Offers Section -->
+        <div class="offers-section">
+            <div class="section-header">
+                <h2>✨ Exclusive Offers</h2>
+                <a href="#" class="view-all">View All Offers →</a>
+            </div>
+            <div class="offers-grid" id="offersGrid"></div>
+        </div>
+
+        <!-- Hotels Section -->
+        <div class="destinations-section">
+            <div class="section-header">
+                <h2>🏨 Popular Hotels in India</h2>
+                <a href="#" class="view-all">View All Hotels →</a>
+            </div>
+            <div class="hotels-grid" id="hotelsGrid"></div>
+        </div>
+
+        <!-- Holiday Packages Section -->
+        <div class="destinations-section">
+            <div class="section-header">
+                <h2>🎁 Best Selling Holiday Packages</h2>
+                <a href="#" class="view-all">View All Packages →</a>
+            </div>
+            <div class="packages-grid" id="packagesGrid"></div>
+        </div>
+
+        <!-- Testimonials Section -->
+        <div class="testimonials-section">
+            <div class="section-header" style="color: var(--white);">
+                <h2>💬 What Our Travelers Say</h2>
+            </div>
+            <div class="testimonials-grid" id="testimonialsGrid"></div>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div class="main-container" id="adminDashboard" style="display: none;">
+        <div class="admin-dashboard">
+            <div class="admin-header">
+                <h2>Admin Dashboard</h2>
+                <button class="search-btn" onclick="logoutAdmin()">Logout</button>
+            </div>
+            
+            <div class="admin-stats">
+                <div class="stat-card">
+                    <h3>Total Bookings</h3>
+                    <div class="stat-number">12,567</div>
+                    <p>↑ 15% from last month</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Revenue</h3>
+                    <div class="stat-number">₹4.5Cr</div>
+                    <p>↑ 22% from last month</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Active Users</h3>
+                    <div class="stat-number">2,892</div>
+                    <p>Currently online</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Active Bookings</h3>
+                    <div class="stat-number">843</div>
+                    <p>Ongoing trips</p>
+                </div>
+            </div>
+
+            <div class="admin-table">
+                <h3 style="margin-bottom: 1rem;">Recent Bookings</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Booking ID</th>
+                            <th>Customer</th>
+                            <th>Service</th>
+                            <th>Destination</th>
+                            <th>Date</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bookingsTable"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h2 style="text-align: center; margin-bottom: 1.5rem;">Welcome to Bharat Darshan</h2>
+            
+            <div class="login-tabs">
+                <button class="login-tab active" onclick="switchLoginTab('user')">User Login</button>
+                <button class="login-tab" onclick="switchLoginTab('admin')">Admin Login</button>
+            </div>
+
+            <!-- User Login Form -->
+            <form id="userLoginForm" class="login-form" onsubmit="handleUserLogin(event)">
+                <input type="email" placeholder="Email Address" required>
+                <input type="password" placeholder="Password" required>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <label>
+                        <input type="checkbox"> Remember me
+                    </label>
+                    <a href="#" style="color: var(--primary);">Forgot Password?</a>
+                </div>
+                <button type="submit">Login as User</button>
+                <p style="text-align: center; color: #666;">
+                    New user? <a href="#">Create an account</a>
+                </p>
+            </form>
+
+            <!-- Admin Login Form -->
+            <form id="adminLoginForm" class="login-form" style="display: none;" onsubmit="handleAdminLogin(event)">
+                <input type="text" placeholder="Admin Username" required>
+                <input type="password" placeholder="Admin Password" required>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <label>
+                        <input type="checkbox"> Remember me
+                    </label>
+                    <a href="#" style="color: var(--primary);">Forgot Password?</a>
+                </div>
+                <button type="submit">Login as Admin</button>
+                <p style="text-align: center; color: #666; background: #f0f0f0; padding: 0.5rem; border-radius: 8px;">
+                    Demo Credentials: admin / admin123
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Bharat Darshan</h3>
+                <p>India's most trusted travel platform. Book flights, hotels, trains, buses, and holiday packages at best prices.</p>
+                <div class="social-links">
+                    <a href="#">📘</a>
+                    <a href="#">📷</a>
+                    <a href="#">🐦</a>
+                    <a href="#">📱</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Domestic Destinations</h3>
+                <ul>
+                    <li><a href="#">Goa Packages</a></li>
+                    <li><a href="#">Kerala Tours</a></li>
+                    <li><a href="#">Manali Trips</a></li>
+                    <li><a href="#">Jaipur Tours</a></li>
+                    <li><a href="#">Andaman Packages</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>International Destinations</h3>
+                <ul>
+                    <li><a href="#">Thailand Packages</a></li>
+                    <li><a href="#">Dubai Tours</a></li>
+                    <li><a href="#">Singapore Holidays</a></li>
+                    <li><a href="#">Maldives Packages</a></li>
+                    <li><a href="#">Europe Tours</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <ul>
+                    <li>📞 +91 12345 67890</li>
+                    <li>✉️ info@bharatdarshan.com</li>
+                    <li>📍 123, Connaught Place, New Delhi</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 Bharat Darshan. All rights reserved. | Made with ❤️ for Incredible India</p>
+        </div>
+    </footer>
+
+    <script>
+        // Sample Data - Domestic Destinations with images
+        const domesticDestinations = [
+            {
+                name: "Goa",
+                image: "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+                location: "West Coast, India",
+                rating: "4.8",
+                price: "₹15,999",
+                duration: "5 Days",
+                features: ["Beaches", "Nightlife", "Water Sports"],
+                tag: "Beach Paradise"
+            },
+            {
+                name: "Kerala",
+                image: "https://images.unsplash.com/photo-1602216055257-3d3b7a0d8b3c?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+                location: "South India",
+                rating: "4.9",
+                price: "₹24,999",
+                duration: "7 Days",
+                features: ["Backwaters", "Ayurveda", "Tea Gardens"],
+                tag: "God's Own Country"
+            },
+            {
+                name: "Manali",
+                image: "https://images.unsplash.com/photo-1626621331441-5a6a5c78a9ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+                location: "Himachal Pradesh",
+                rating: "4.7",
+                price: "₹18,999",
+                duration: "6 Days",
+                features: ["Snow", "Adventure", "Trekking"],
+                tag: "Mountain Paradise"
+            },
+            {
+                name: "Jaipur",
+                image: "https://images.unsplash.com/photo-1477587458883-47145fcbba5a?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+                location: "Rajasthan",
+                rating: "4.8",
+                price: "₹16,999",
+                duration: "4 Days",
+                features: ["Palaces", "Culture", "Shopping"],
+                tag: "Pink City"
+            },
+            {
+                name: "Ladakh",
+                image: "https://images.unsplash.com/photo-1544640808-32ca72ac7f37?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+                location: "Jammu & Kashmir",
+                rating: "4.9",
+                price: "₹34,999",
+                duration: "8 Days",
+                features: ["Monasteries", "Biking", "Lakes"],
+                tag: "Land of High Passes"
+            },
+            {
+                name: "Andaman",
+                image: "https://images.unsplash.com/photo-1583415110439-5f4c1b0a3a5a?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+                location: "Bay of Bengal",
+                rating: "4.8",
+                price: "₹29,999",
+                duration: "6 Days",
+                features: ["Beaches", "Scuba", "Islands"],
+                tag: "Tropical Paradise"
+            }
+        ];
+
+        // International Destinations with images
+        const internationalDestinations = [
+            {
+                name: "Bangkok",
+                image: "https://images.unsplash.com/photo-1508009603885-50b6c3924d82?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+                location: "Thailand",
+                rating: "4.7",
+                price: "₹35,999",
+                duration: "5 Days",
+                features: ["Temples", "Markets", "Nightlife"],
+                tag: "Budget Paradise"
+            },
+            {
+                name: "Dubai",
+                image: "https://images.unsplash.com/photo-1512453979798-5c266f86b7f2?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+                location: "UAE",
+                rating: "4.9",
+                price: "₹65,999",
+                duration: "6 Days",
+                features: ["Burj Khalifa", "Desert Safari", "Shopping"],
+                tag: "Luxury Destination"
+            },
+            {
+                name: "Singapore",
+                image: "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+                location: "Singapore",
+                rating: "4.8",
+                price: "₹55,999",
+                duration: "5 Days",
+                features: ["Marina Bay", "Sentosa", "Food"],
+                tag: "Garden City"
+            },
+            {
+                name: "Maldives",
+                image: "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+                location: "Maldives",
+                rating: "4.9",
+                price: "₹89,999",
+                duration: "5 Days",
+                features: ["Overwater Villas", "Beaches", "Snorkeling"],
+                tag: "Honeymoon Paradise"
+            },
+            {
+                name: "Bali",
+                image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+                location: "Indonesia",
+                rating: "4.8",
+                price: "₹45,999",
+                duration: "6 Days",
+                features: ["Temples", "Rice Terraces", "Beaches"],
+                tag: "Island of Gods"
+            },
+            {
+                name: "Paris",
+                image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+                location: "France",
+                rating: "4.9",
+                price: "₹1,25,999",
+                duration: "7 Days",
+                features: ["Eiffel Tower", "Museums", "Cuisine"],
+                tag: "City of Love"
+            }
+        ];
+
+        // Hotels Data
+        const hotels = [
+            {
+                name: "Taj Palace",
+                image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+                location: "New Delhi",
+                rating: "5 Star",
+                price: "₹12,999",
+                amenities: ["Pool", "Spa", "Fine Dining", "Luxury Rooms"]
+            },
+            {
+                name: "The Oberoi",
+                image: "https://images.unsplash.com/photo-1582719508461-905c673771fd?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+                location: "Mumbai",
+                rating: "5 Star",
+                price: "₹15,999",
+                amenities: ["Sea View", "Pool", "Luxury Spa", "Multiple Restaurants"]
+            },
+            {
+                name: "Taj Fort Aguada",
+                image: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+                location: "Goa",
+                rating: "5 Star",
+                price: "₹9,999",
+                amenities: ["Beach Access", "Pool", "Spa", "Water Sports"]
+            },
+            {
+                name: "The Leela Palace",
+                image: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+                location: "Jaipur",
+                rating: "5 Star",
+                price: "₹14,999",
+                amenities: ["Palace View", "Pool", "Royal Spa", "Heritage Rooms"]
+            }
+        ];
+
+        // Packages Data
+        const packages = [
+            {
+                name: "Kerala Backwaters Special",
+                image: "https://images.unsplash.com/photo-1602216055257-3d3b7a0d8b3c?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+                duration: "6N/7D",
+                cities: ["Cochin", "Alleppey", "Munnar", "Kovalam"],
+                includes: ["Flights", "Hotels", "Houseboat", "Sightseeing"],
+                price: "₹34,999"
+            },
+            {
+                name: "Royal Rajasthan",
+                image: "https://images.unsplash.com/photo-1477587458883-47145fcbba5a?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+                duration: "7N/8D",
+                cities: ["Jaipur", "Jodhpur", "Udaipur", "Jaisalmer"],
+                includes: ["Flights", "Palace Hotels", "Jeep Safari", "Cultural Shows"],
+                price: "₹49,999"
+            },
+            {
+                name: "Thailand Honeymoon",
+                image: "https://images.unsplash.com/photo-1508009603885-50b6c3924d82?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+                duration: "5N/6D",
+                cities: ["Bangkok", "Pattaya", "Phuket"],
+                includes: ["Flights", "Resorts", "Island Tours", "Couple Spa"],
+                price: "₹54,999"
+            },
+            {
+                name: "Kashmir Paradise",
+                image: "https://images.unsplash.com/photo-1626621331441-5a6a5c78a9ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+                duration: "5N/6D",
+                cities: ["Srinagar", "Gulmarg", "Pahalgam", "Sonmarg"],
+                includes: ["Flights", "Houseboat", "Gondola Ride", "Shikara Ride"],
+                price: "₹29,999"
+            }
+        ];
+
+        // Offers Data
+        const offers = [
+            {
+                title: "FLAT ₹5000 OFF",
+                description: "On domestic flight bookings",
+                image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+                tag: "Limited Period",
+                price: "Use code BHARAT5000"
+            },
+            {
+                title: "Hotel Stay Deal",
+                description: "Get 40% off on luxury hotels in India",
+                image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+                tag: "Flash Sale",
+                price: "Starting ₹1999/night"
+            },
+            {
+                title: "International Packages",
+                description: "Thailand, Dubai, Singapore at special rates",
+                image: "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+                tag: "Early Bird",
+                price: "EMI options available"
+            }
+        ];
+
+        // Testimonials Data
+        const testimonials = [
+            {
+                name: "Rajesh Kumar",
+                image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+                text: "Amazing experience with Bharat Darshan! Our Kerala trip was perfectly organized. The houseboat stay was unforgettable.",
+                rating: "★★★★★"
+            },
+            {
+                name: "Priya Sharma",
+                image: "https://images.unsplash.com/photo-1494790108777-7661002c5c10?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+                text: "Booked our Thailand honeymoon package. Everything was seamless from flights to hotels. Highly recommended!",
+                rating: "★★★★★"
+            },
+            {
+                name: "Amit Patel",
+                image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+                text: "Best travel agency for domestic tours. Their Manali package was value for money. Will book again!",
+                rating: "★★★★★"
+            }
+        ];
+
+        // Bookings Data
+        const bookings = [
+            { id: "#BK001", customer: "Rahul Sharma", service: "Flight", destination: "Goa", date: "2024-06-15", amount: "₹5,999", status: "Confirmed" },
+            { id: "#BK002", customer: "Priya Singh", service: "Hotel", destination: "Jaipur", date: "2024-06-20", amount: "₹12,999", status: "Pending" },
+            { id: "#BK003", customer: "Amit Kumar", service: "Package", destination: "Kerala", date: "2024-07-01", amount: "₹34,999", status: "Confirmed" },
+            { id: "#BK004", customer: "Neha Gupta", service: "Flight", destination: "Delhi-Mumbai", date: "2024-06-18", amount: "₹4,599", status: "Confirmed" },
+            { id: "#BK005", customer: "Vikram Mehta", service: "Hotel", destination: "Udaipur", date: "2024-06-25", amount: "₹8,999", status: "Cancelled" }
+        ];
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            loadDomesticDestinations();
+            loadInternationalDestinations();
+            loadHotels();
+            loadPackages();
+            loadOffers();
+            loadTestimonials();
+            loadBookings();
+        });
+
+        // Load Domestic Destinations
+        function loadDomesticDestinations() {
+            const domesticGrid = document.getElementById('domesticGrid');
+            domesticDestinations.forEach(dest => {
+                const card = document.createElement('div');
+                card.className = 'dest-card';
+                card.innerHTML = `
+                    <div class="dest-image" style="background-image: url('${dest.image}')">
+                        <span class="dest-tag">${dest.tag}</span>
+                    </div>
+                    <div class="dest-content">
+                        <div class="dest-header">
+                            <h3 class="dest-name">${dest.name}</h3>
+                            <span class="dest-rating">★ ${dest.rating}</span>
+                        </div>
+                        <div class="dest-location">📍 ${dest.location}</div>
+                        <div class="dest-features">
+                            ${dest.features.map(f => `<span>✨ ${f}</span>`).join('')}
+                        </div>
+                        <div class="dest-price">${dest.price} <small>per person</small></div>
+                        <button class="book-btn" style="width: 100%; margin-top: 1rem;" onclick="bookNow('package', '${dest.name}')">Book Now</button>
+                    </div>
+                `;
+                domesticGrid.appendChild(card);
+            });
+        }
+
+        // Load International Destinations
+        function loadInternationalDestinations() {
+            const internationalGrid = document.getElementById('internationalGrid');
+            internationalDestinations.forEach(dest => {
+                const card = document.createElement('div');
+                card.className = 'dest-card';
+                card.innerHTML = `
+                    <div class="dest-image" style="background-image: url('${dest.image}')">
+                        <span class="dest-tag">${dest.tag}</span>
+                    </div>
+                    <div class="dest-content">
+                        <div class="dest-header">
+                            <h3 class="dest-name">${dest.name}</h3>
+                            <span class="dest-rating">★ ${dest.rating}</span>
+                        </div>
+                        <div class="dest-location">📍 ${dest.location}</div>
+                        <div class="dest-features">
+                            ${dest.features.map(f => `<span>✨ ${f}</span>`).join('')}
+                        </div>
+                        <div class="dest-price">${dest.price} <small>per person</small></div>
+                        <button class="book-btn" style="width: 100%; margin-top: 1rem;" onclick="bookNow('package', '${dest.name}')">Book Now</button>
+                    </div>
+                `;
+                internationalGrid.appendChild(card);
+            });
+        }
+
+        // Load Hotels
+        function loadHotels() {
+            const hotelsGrid = document.getElementById('hotelsGrid');
+            hotels.forEach(hotel => {
+                const card = document.createElement('div');
+                card.className = 'hotel-card';
+                card.innerHTML = `
+                    <div class="hotel-image" style="background-image: url('${hotel.image}')">
+                        <span class="hotel-rating-badge">${hotel.rating}</span>
+                    </div>
+                    <div class="hotel-content">
+                        <h3 class="hotel-name">${hotel.name}</h3>
+                        <div class="hotel-location">📍 ${hotel.location}</div>
+                        <div class="hotel-amenities">
+                            ${hotel.amenities.map(a => `<span class="amenity">${a}</span>`).join('')}
+                        </div>
+                        <div class="hotel-price">${hotel.price} <small>/night</small></div>
+                        <button class="book-btn" style="width: 100%; margin-top: 1rem;" onclick="bookNow('hotel', '${hotel.name}')">Book Now</button>
+                    </div>
+                `;
+                hotelsGrid.appendChild(card);
+            });
+        }
+
+        // Load Packages
+        function loadPackages() {
+            const packagesGrid = document.getElementById('packagesGrid');
+            packages.forEach(pkg => {
+                const card = document.createElement('div');
+                card.className = 'package-card';
+                card.innerHTML = `
+                    <div class="package-image" style="background-image: url('${pkg.image}')">
+                        <span class="package-duration">${pkg.duration}</span>
+                    </div>
+                    <div class="package-content">
+                        <h3 class="package-title">${pkg.name}</h3>
+                        <div class="package-cities">${pkg.cities.join(' • ')}</div>
+                        <div class="package-includes">
+                            ${pkg.includes.map(i => `<span class="include-item">✓ ${i}</span>`).join('')}
+                        </div>
+                        <div class="package-footer">
+                            <div class="package-price">${pkg.price}</div>
+                            <button class="book-btn" onclick="bookNow('package', '${pkg.name}')">View Details</button>
+                        </div>
+                    </div>
+                `;
+                packagesGrid.appendChild(card);
+            });
+        }
+
+        // Load Offers
+        function loadOffers() {
+            const offersGrid = document.getElementById('offersGrid');
+            offers.forEach(offer => {
+                const card = document.createElement('div');
+                card.className = 'offer-card';
+                card.innerHTML = `
+                    <div class="offer-image" style="background-image: url('${offer.image}')">
+                        <span class="offer-tag">${offer.tag}</span>
+                    </div>
+                    <div class="offer-content">
+                        <h3>${offer.title}</h3>
+                        <p>${offer.description}</p>
+                        <div class="offer-price">${offer.price}</div>
+                    </div>
+                `;
+                offersGrid.appendChild(card);
+            });
+        }
+
+        // Load Testimonials
+        function loadTestimonials() {
+            const testimonialsGrid = document.getElementById('testimonialsGrid');
+            testimonials.forEach(testimonial => {
+                const card = document.createElement('div');
+                card.className = 'testimonial-card';
+                card.innerHTML = `
+                    <div class="testimonial-image" style="background-image: url('${testimonial.image}')"></div>
+                    <div class="testimonial-text">"${testimonial.text}"</div>
+                    <div class="testimonial-name">${testimonial.name}</div>
+                    <div class="testimonial-rating">${testimonial.rating}</div>
+                `;
+                testimonialsGrid.appendChild(card);
+            });
+        }
+
+        // Load Bookings
+        function loadBookings() {
+            const bookingsTable = document.getElementById('bookingsTable');
+            bookings.forEach(booking => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${booking.id}</td>
+                    <td>${booking.customer}</td>
+                    <td>${booking.service}</td>
+                    <td>${booking.destination}</td>
+                    <td>${booking.date}</td>
+                    <td>${booking.amount}</td>
+                    <td><span class="status-badge status-${booking.status.toLowerCase()}">${booking.status}</span></td>
+                    <td>
+                        <button class="action-btn edit-btn" onclick="editBooking('${booking.id}')">Edit</button>
+                        <button class="action-btn delete-btn" onclick="deleteBooking('${booking.id}')">Delete</button>
+                    </td>
+                `;
+                bookingsTable.appendChild(row);
+            });
+        }
+
+        // Switch Travel Type
+        function switchTravelType(type) {
+            const buttons = document.querySelectorAll('.type-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            if (type === 'domestic') {
+                document.getElementById('domesticSection').style.display = 'block';
+                document.getElementById('internationalSection').style.display = 'none';
+            } else {
+                document.getElementById('domesticSection').style.display = 'none';
+                document.getElementById('internationalSection').style.display = 'block';
+            }
+        }
+
+        // Filter Destinations
+        function filterDestinations(category) {
+            alert(`Showing ${category} destinations...`);
+        }
+
+        // Switch Service
+        function switchService(service) {
+            const tabs = document.querySelectorAll('.service-tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Hide all search forms
+            document.getElementById('flightSearch').style.display = 'none';
+            document.getElementById('hotelSearch').style.display = 'none';
+            document.getElementById('packageSearch').style.display = 'none';
+            document.getElementById('trainSearch').style.display = 'none';
+            document.getElementById('busSearch').style.display = 'none';
+
+            // Show selected form
+            switch(service) {
+                case 'flights':
+                    document.getElementById('flightSearch').style.display = 'grid';
+                    break;
+                case 'hotels':
+                    document.getElementById('hotelSearch').style.display = 'grid';
+                    break;
+                case 'packages':
+                    document.getElementById('packageSearch').style.display = 'grid';
+                    break;
+                case 'trains':
+                    document.getElementById('trainSearch').style.display = 'grid';
+                    break;
+                case 'buses':
+                    document.getElementById('busSearch').style.display = 'grid';
+                    break;
+            }
+        }
+
+        // Search Flights
+        function searchFlights() {
+            const from = document.getElementById('fromCity').value;
+            const to = document.getElementById('toCity').value;
+            const depart = document.getElementById('departDate').value;
+            const returnDate = document.getElementById('returnDate').value;
+            
+            if (!isLoggedIn()) {
+                openModal();
+                return;
+            }
+            
+            alert(`Searching flights from ${from} to ${to}\nDepart: ${depart}\nReturn: ${returnDate}\nShowing best available flights...`);
+        }
+
+        // Book Now
+        function bookNow(type, name) {
+            if (!isLoggedIn()) {
+                openModal();
+                return;
+            }
+            alert(`Booking ${type}: ${name}\nRedirecting to secure checkout...`);
+        }
+
+        // Login Modal
+        const modal = document.getElementById('loginModal');
+        
+        function openModal() {
+            modal.style.display = 'block';
+        }
+
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+
+        // Switch Login Tab
+        function switchLoginTab(tab) {
+            const tabs = document.querySelectorAll('.login-tab');
+            tabs.forEach(t => t.classList.remove('active'));
+            event.target.classList.add('active');
+
+            document.getElementById('userLoginForm').style.display = tab === 'user' ? 'flex' : 'none';
+            document.getElementById('adminLoginForm').style.display = tab === 'admin' ? 'flex' : 'none';
+        }
+
+        // Handle User Login
+        function handleUserLogin(event) {
+            event.preventDefault();
+            alert('Welcome to Bharat Darshan! Login successful.');
+            closeModal();
+            localStorage.setItem('userLoggedIn', 'true');
+        }
+
+        // Handle Admin Login
+        function handleAdminLogin(event) {
+            event.preventDefault();
+            const username = event.target[0].value;
+            const password = event.target[1].value;
+
+            if (username === 'admin' && password === 'admin123') {
+                alert('Admin access granted');
+                closeModal();
+                showAdminDashboard();
+                localStorage.setItem('adminLoggedIn', 'true');
+            } else {
+                alert('Invalid admin credentials. Try admin/admin123');
+            }
+        }
+
+        // Show Admin Dashboard
+        function showAdminDashboard() {
+            document.querySelector('.hero-section').style.display = 'none';
+            document.querySelector('.travel-type').style.display = 'none';
+            document.querySelector('.search-container').style.display = 'none';
+            document.querySelector('.dest-categories').style.display = 'none';
+            document.getElementById('domesticSection').style.display = 'none';
+            document.getElementById('internationalSection').style.display = 'none';
+            document.querySelector('.offers-section').style.display = 'none';
+            document.querySelector('.destinations-section').style.display = 'none';
+            document.querySelector('.testimonials-section').style.display = 'none';
+            document.getElementById('adminDashboard').style.display = 'block';
+        }
+
+        // Logout Admin
+        function logoutAdmin() {
+            document.querySelector('.hero-section').style.display = 'block';
+            document.querySelector('.travel-type').style.display = 'flex';
+            document.querySelector('.search-container').style.display = 'block';
+            document.querySelector('.dest-categories').style.display = 'grid';
+            document.getElementById('domesticSection').style.display = 'block';
+            document.getElementById('internationalSection').style.display = 'none';
+            document.querySelector('.offers-section').style.display = 'block';
+            document.querySelector('.destinations-section').style.display = 'block';
+            document.querySelector('.testimonials-section').style.display = 'block';
+            document.getElementById('adminDashboard').style.display = 'none';
+            localStorage.removeItem('adminLoggedIn');
+        }
+
+        // Check Login Status
+        function isLoggedIn() {
+            return localStorage.getItem('userLoggedIn') === 'true' || localStorage.getItem('adminLoggedIn') === 'true';
+        }
+
+        // Admin Functions
+        function editBooking(id) {
+            alert(`Editing booking: ${id}\nThis would open an edit form in production.`);
+        }
+
+        function deleteBooking(id) {
+            if (confirm(`Are you sure you want to delete booking ${id}?`)) {
+                alert(`Booking ${id} has been deleted.`);
+            }
+        }
+
+        // Login button click
+        document.getElementById('loginBtn').onclick = function(e) {
+            e.preventDefault();
+            openModal();
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
